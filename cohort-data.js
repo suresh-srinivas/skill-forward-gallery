@@ -1,0 +1,256 @@
+// SkillForward 5-Hour Cohort — submissions data
+window.COHORT = [
+  {
+    name: "Mary Killelea",
+    northStar: "I love learning and I'm excited about what's possible with AI.",
+    gap: "Started and completed a project with relevant tools (Lovable, GitHub).",
+    giving: "Help others articulate their value, simplify their message, and convey confidence and authority — and gut-check Skill-Forward's program for non-technical audiences.",
+    tools: ["Claude", "Lovable", "GitHub"],
+    site: "https://marys-creative-canvas.lovable.app/",
+    portfolio: "https://marys-creative-canvas.lovable.app/",
+    learnings: "Learned what role GitHub plays, how to access it, and what Lovable is and how it interacts with GitHub. It's helpful to have a project to apply the learning to.",
+    testimonial: ""
+  },
+  {
+    name: "Pedro I Hernández",
+    northStar: "When addressing new challenges, I try to find solutions that not only address the current situation but are also scalable — improving day-to-day interactions between team members, the organization, and the value delivered.",
+    gap: "Improve my visualization of workflows with the AI tools and methods available.",
+    giving: "Be a problem solver and solution provider — step outside your comfort zone and take different personas when bringing value to others.",
+    tools: ["Claude", "ChatGPT", "Gemini", "Lovable", "Copilot Tasks"],
+    site: "https://pedro-hernandez-portfolio.lovable.app/",
+    portfolio: "https://www.linkedin.com/in/pedro-i-hernandez-perez",
+    learnings: "Building the portfolio was much easier than I thought. The world of assets for non-tech and technical productivity still surprises me every day.",
+    testimonial: "Through Skill-Forward with Suresh Srinivas and the cohort that started April 27 in Portland, OR, I acquired an asset that marks a significant milestone in my personal and professional development. This achievement lays the groundwork for continuous learning and highlights my commitment to delivering value to others while striving for self-improvement with each new engagement. Looking forward to what comes next!"
+  },
+  {
+    name: "Priya Limaye",
+    northStar: "I'm a developer. I feel most energized turning a concept into a functional reality. AI tools handle the boilerplate so I can focus on high-level integration and bring other people's visionary ideas to life faster than ever.",
+    gap: "As a developer I've often felt slowed down by frontend polish. Mastering AI-native tools like Lovable and Cursor lets me deliver a full-stack, polished experience.",
+    giving: "Software development logic and architecture — how to structure prompts for cleaner code, and how to think like a developer when debugging AI-generated outputs.",
+    tools: ["ChatGPT", "Lovable", "GitHub Copilot"],
+    site: "https://priya-limaye.lovable.app",
+    portfolio: "https://priya-limaye.lovable.app",
+    learnings: "Main surprise was the ease of use. Instead of hours on basic setup I liked the iterative, conversational flow.",
+    testimonial: "As a developer, I was skeptical about how much a 5-hour AI cohort could change my workflow. I was wrong. SkillForward pushed me to stop 'over-engineering' and start 'co-creating' with AI. It's fundamentally changed how I view the speed of development."
+  },
+  {
+    name: "Anusha Suntheram",
+    northStar: "Solving problems drives me. I sit between business and tech and have a way of building bridges to solve end-to-end supply chain problems. AI helps reduce the mundane so I can spend time actually helping people.",
+    gap: "Learn how to use more tools like GitHub.",
+    giving: "Strategic planning. Hoping to gain the ease that most people seem to have around the new apps that are popping up.",
+    tools: ["Claude", "GitHub Copilot"],
+    site: "https://anushasuntheram.github.io",
+    portfolio: "https://www.linkedin.com/in/anusha-suntheram",
+    learnings: "Wanted to learn how others use AI and how to incorporate it into my work and life. I was surprised how hard GitHub was for me.",
+    testimonial: "Skill-Forward is so helpful. It provides time and space to upskill. I'm excited to keep learning and adding projects to my portfolio. It's also great to learn in real time from the other students. I hope there are more cohorts so others can also participate and further their skillset."
+  },
+  {
+    name: "Kris Rodden",
+    northStar: "Supporting an excellent customer experience. AI skills provide an efficient means to accomplish goals and complete related tasks.",
+    gap: "Describing what I have to offer.",
+    giving: "A good collaborator and communicator, confident to review and edit. Hoping to learn which AI tools are easiest to use and work best.",
+    tools: ["Claude"],
+    site: null,
+    portfolio: "https://krisrodden.github.io/KrisRoddenPortfolio/",
+    learnings: "An overview of available AI tools — and feeling overwhelmed by the sheer quantity of tools available.",
+    testimonial: "The Skill-Forward program provided a good introduction to available AI tools with a cohort, and guided me through how to create a portfolio site — helpful for my job-search process."
+  },
+  {
+    name: "Susan Chow",
+    northStar: "As a non-coder, I'm really excited to learn coding skills — and energized that there are people around in my same situation, learning together.",
+    gap: "Understand fundamentals in coding, coding tools, and overall general computing knowledge.",
+    giving: "Hope to support and energize fellow cohort members to be in community and upskill together.",
+    tools: ["Gemini", "Lovable"],
+    site: "https://susans-quality-hub.lovable.app",
+    portfolio: null,
+    learnings: "Learnt how to deploy my first portfolio.",
+    testimonial: "Skill-Forward is an awesome program supporting Oregonians. Very thankful for the funding and effort of the Skill-Forward team."
+  },
+  {
+    name: "Michael Moore",
+    northStar: "Building and improving systems that make teams more productive. AI helps build more feature-rich and robust tools — and do it faster than I can as a beginner coder but seasoned systems thinker.",
+    gap: "Prompt engineering and using AI agents effectively to streamline work — safely.",
+    giving: "Happy to work with others from the cohort to solve problems and learn together.",
+    tools: ["ChatGPT"],
+    site: "https://michaelm-503.github.io",
+    portfolio: "https://www.linkedin.com/in/michaelcmoorephd/",
+    learnings: "Used AI to vastly improve my portfolio page from a simple markdown page to a professional pitch website. Surprised how close I got to my final result with a single prompt.",
+    testimonial: "Skill Forward gave me a structured way to turn ideas into portfolio-ready projects using AI tools. Instead of just talking about AI, the program focused on applying it: identifying problems, building solutions, and presenting the work clearly alongside a resume. That proof-of-work mindset is exactly what job seekers need as hiring shifts toward demonstrated capability."
+  },
+  {
+    name: "Mike Karras",
+    northStar: "Creating interesting, expressive digital experiences and highly functional applications. AI is an accelerator for both.",
+    gap: "Personal branding, resume polishing, portfolio.",
+    giving: "Can teach or share software engineering topics. Hoping to learn on the data science / ML side.",
+    tools: ["ChatGPT", "Lovable"],
+    site: "https://mike-r-karras.lovable.app/",
+    portfolio: "https://www.linkedin.com/in/mike-karras-187b481b/",
+    learnings: "Really appreciated the insights on bringing your whole self to your portfolio, and PURCS — both will stick with me going forward.",
+    testimonial: "Skill-Forward was time well spent. Suresh brings valuable information, skill-building and advice. I'm glad I came."
+  },
+  {
+    name: "Pallavi Kadam",
+    northStar: "Looking into software systems and validation roles, I'm interested in applying AI to actual debugging and CI/CD pipelines. I feel energized and purposeful when I'm practicing yoga, learning nutrition, mentoring, or learning new technologies and seeing the good impact.",
+    gap: "HackerRank-style coding problems during interviews. Detailed deep-dive technical areas. AI agent architecture.",
+    giving: "Comfortable sharing technical details. Excited to know what kind of different ideas others have.",
+    tools: ["ChatGPT", "Lovable", "Bolt.new", "Replit"],
+    site: "https://codeconnect-craft.lovable.app/",
+    portfolio: "https://skill-bridge-ai-30.lovable.app",
+    learnings: "Tried Lovable and Replit. Lovable is more UI-friendly and easy to integrate with GitHub. Replit allowed more prompts/tokens without subscription, but GitHub integration needs work.",
+    testimonial: ""
+  },
+  {
+    name: "Jon Beam",
+    northStar: "Building & creating with AI. Being able to actually create something — app, function, site — that was previously just an idea, and bring it to life.",
+    gap: "Confidently deploy a working, functioning thing and make it live and usable by others.",
+    giving: "My perspective, experience and knowledge as it may apply to others' learning. Hoping to learn the different processes others use.",
+    tools: ["Claude", "ChatGPT", "Gemini", "GitHub Pages"],
+    site: "https://j-beam-ai.github.io/",
+    portfolio: "https://github.com/J-Beam-AI",
+    learnings: "Seeing how 'simple' a portfolio can be, and carrying the K.I.S.S. principle into all things — not just when convenient.",
+    testimonial: "Great opportunity to learn without being overwhelmed with jargon or complexities. Able to apply learnings to real life problems beyond theoretical use cases."
+  },
+  {
+    name: "Tuan Doan",
+    northStar: "Possibilities. AI now gives me more possibilities — like the early internet era. AI enables me to be creative and get my ideas out there.",
+    gap: "Cloud certifications.",
+    giving: "Can teach token-efficient vibe coding.",
+    tools: ["Lovable"],
+    site: "https://tuandoan.lovable.app/",
+    portfolio: "https://tuandoan.lovable.app/",
+    learnings: "Lovable — I had not used this app before.",
+    testimonial: "Learning with folks in similar situations. This gives me encouragement to continue on my learning path."
+  },
+  {
+    name: "Kenyon (Rosebud) Acton",
+    northStar: "I want to help people and improve society through data. I'm working on a project around permitting since this seems to be an area cities can use help with — going from policy to practice.",
+    gap: "AI, technical interviewing skills, hands-on data science, portfolio with proof of data science work.",
+    giving: "Leadership, design, creative thinking. Hoping to network, learn best practices, and learn technical skills — I tend to be concerned about security issues.",
+    tools: ["Claude"],
+    site: "https://kenyonacton.github.io/portfolio/",
+    portfolio: "https://www.linkedin.com/in/kenyonacton/",
+    learnings: "Grateful to learn together about things like prompting with a style guide. Design is fun with AI — it takes out the drudgery and accelerates creativity.",
+    testimonial: "Skill-Forward provides a supportive and inspiring format for building technical skills alongside critical thinking, leadership, and creativity. The portfolio-based projects facilitate hands-on learning, encourage skill sharing, and produce shareable learning achievements. I've enjoyed talking with potential employers about the projects, and I love seeing workflows evolve as AI opens up new solutions to existing issues. Thank you for this opportunity to advance my technical skills and grow toward data work that makes a difference in communities."
+  },
+  {
+    name: "Srikathyayani Srikanteswara",
+    northStar: "Solving hard problems energizes me the most. AI is like having a team of software programmers at your disposal — it's possible to test out a lot more ideas solo without needing a team of engineers.",
+    gap: "Being able to deploy large-scale AI/ML systems in the cloud.",
+    giving: "Anything wireless and networking and AI; foundations of AI/ML and LLM models including transformer architecture. Also vibe coding with Cursor, Claude, etc.",
+    tools: ["Claude", "ChatGPT", "Cursor", "Lovable"],
+    site: "https://srikathyayani-s.github.io/MyPortfolio/",
+    portfolio: "https://www.linkedin.com/in/kathyayani-srikanteswara-ph-d-a11b119/",
+    learnings: "The creative part of AI surprised me the most. Just by giving general artistic guidance, I was surprised how well it came out.",
+    testimonial: "They say teaching is the best form of learning, and I fully experienced it during my time mentoring people creating their portfolios. It was so much fun jointly troubleshooting and diagnosing problems and experiencing the joy when it all works! Big kudos to Suresh for organizing such a wonderful program — I feel privileged to be part of this journey. The invited speakers were the cherry on top."
+  },
+  {
+    name: "Sunitha Narayanan",
+    northStar: "Building the invisible systems that enable global innovation. I bridge ambitious business vision with complex architecture to create effortless consumer experiences. In this next chapter I'm focusing on Technical Orchestration within Agentic AI and MLOps — building secure, compliant, ethically architected platforms.",
+    gap: "Architectural orchestration of Agentic AI within MLOps frameworks — mastering autonomous agents requires a new level of precision in governance and deployment pipelines.",
+    giving: "Career transitions and modernizing professional narratives. Hoping to gain fresh perspectives on hands-on agentic implementations and the operational trade-offs of moving AI projects from 0 to 1.",
+    tools: ["Gemini", "Cursor", "Lovable", "Bolt.new", "Google AI Studio"],
+    site: "https://sunnyportland.github.io/snarayanan-portfolio/",
+    portfolio: "https://www.linkedin.com/in/nsunitha",
+    learnings: "Context window management is just as critical as the code itself. Source-of-truth management is non-negotiable; syncing with GitHub is the only way to prevent a browser-based agent and a local environment from drifting apart.",
+    testimonial: "The Skill-Forward RAMP program is a practical 'fast-track' for technology or business professionals who want to translate years of experience into the current market. In just a few sessions, I was able to take my background in technical leadership and turn it into a tangible portfolio. The program moves past the theory — Suresh walked us through specific tools to build real-world artifacts that actually demonstrate value in the AI era. Beyond the technical work, it was great to be in a room with other professionals in similar career transitions. I'm looking forward to the next part of the program!"
+  },
+  {
+    name: "Kristopher Mahdak",
+    northStar: "I dream of a day when we use computers more while spending no time on screens.",
+    gap: "Effective communication articulating accomplishments.",
+    giving: "How to write prompts, direct LLM progressions, and build chat/project context. I learn by understanding failure.",
+    tools: ["Lovable", "Perplexity"],
+    site: "https://jimsixred.tech/",
+    portfolio: "https://jimsixred.tech/",
+    learnings: "Workforce training programs are viable for skilled workers. Advanced-degree holders are usually overlooked and not served with new training post-layoff. More please.",
+    testimonial: "Will provide after completion of 40-hour bootcamp."
+  },
+  {
+    name: "Sirisha Malladi",
+    northStar: "I feel most energized when I'm helping teams move forward with clarity — facilitating cross-team collaboration, removing impediments, and keeping work flowing toward shared goals. I see AI as a way to support this further: identify patterns earlier, surface risks, and reduce manual effort.",
+    gap: "Getting more hands-on with AI tools and understanding how to apply them in day-to-day work.",
+    giving: "Helping teams stay aligned and move work forward — Agile delivery, stakeholder communication, keeping work on track. Hoping to learn how others are using AI to solve real-world pain points.",
+    tools: ["ChatGPT", "Lovable"],
+    site: "https://clarity-driven-persona.lovable.app/",
+    portfolio: "https://www.linkedin.com/in/sirisha-malladi-380ab47/",
+    learnings: "How quickly AI can surface patterns and insights that would take much longer manually — and that the real value comes from framing the right problem and guiding the tool effectively.",
+    testimonial: "The Skill-Forward cohort made me more comfortable experimenting with AI tools. I used to see AI as something I had to deal with — almost like a necessary evil — and would often shy away from it. Learning alongside people from varied backgrounds helped shift that perspective. It's now something I'm much more open to exploring, and I feel more confident using AI in a practical, hands-on way. It's been a supportive environment to learn, experiment, and build confidence."
+  },
+  {
+    name: "Khalid Abughazaleh",
+    northStar: "When I'm trying to solve a persisting problem with a personal stake in it.",
+    gap: "Additional practical skills and foundational knowledge, especially in areas of less experience.",
+    giving: "More implementational or practical knowledge that reduces frustration.",
+    tools: ["Lovable", "Perplexity AI", "GitHub"],
+    site: "https://kabughazaleh.github.io/",
+    portfolio: "https://www.linkedin.com/in/kabughazaleh/",
+    learnings: "Use of Lovable and the quirks of GitHub. Lovable is not as good for detailed customization. Given more time, I would explore a variety of tools before investing too much in a project.",
+    testimonial: "Thank you."
+  },
+  {
+    name: "Supriya Shanbhag",
+    northStar: "Quest to understand this universe and how people can continuously evolve. AI can help me create tools to address the evolving psychological, spiritual and social needs of human beings and the Earth that we inhabit.",
+    gap: "Application of AI-enabled technologies to solve issues in social, economic and racial justice.",
+    giving: "Inter-disciplinary uses of technology. Can learn a lot about how to think about technology and diverse ways of applying tools and innovation.",
+    tools: ["Claude", "ChatGPT", "Lovable", "GitHub Copilot"],
+    site: "https://supriya-showcase-builder.lovable.app",
+    portfolio: "https://github.com/supriyashanbhag/Supriya-s-treasure-chest/tree/main",
+    learnings: "Learnt a lot about the framework of AI and the applications. The speed of the output surprised me as well as the versatility and creativity.",
+    testimonial: "Suresh did an awesome job of establishing a clear framework and very doable, creative activities that enabled me to learn the use of AI and develop a curiosity about its applications in my work."
+  },
+  {
+    name: "Aji Fatou Dibba",
+    northStar: "Being of service to my family, friends, and community drives me. AI could help accelerate a financial service tool that is useful to people, especially women.",
+    gap: "Working on projects that I can put on GitHub and are also useful — and projects that are iterative.",
+    giving: "Can teach skills from my data science journey, or thinking through ideas to flesh out an MVP. Hoping to learn AI skills.",
+    tools: ["Claude", "Lovable"],
+    site: "https://ajifatoudibba.lovable.app",
+    portfolio: "https://www.linkedin.com/in/ajifatoudibba",
+    learnings: "Learned to keep things simple — and there are a lot of AI tools to make life easier when it comes to projects.",
+    testimonial: "Highly will recommend Skill-Forward for anyone interested in AI."
+  },
+  {
+    name: "Aprajita Shukla",
+    northStar: "When my projects do social good and inform people at the same time.",
+    gap: "AI project portfolio and coding acumen.",
+    giving: "Hoping to learn how to use agentic AI to write better, optimized code. Can share my knowledge of AI and git with fellow members.",
+    tools: ["Claude", "ChatGPT", "Netlify"],
+    site: "https://cute-panda-63ddf3.netlify.app/",
+    portfolio: "https://www.linkedin.com/in/aprajita-shukla",
+    learnings: "AI can do so much more than I imagined. I would delegate a lot more and spend time exploring multiple possibilities.",
+    testimonial: "Skill-Forward changed how I think about AI. In a world that won't look away from it, this program taught me how to use it to my advantage. I built a full portfolio in a matter of hours, learned from a brilliant cohort of participants, and walked away from Shashi and Andrea's sessions with knowledge I couldn't have gained any other way. My growth in a single week felt like 5x — and I know I'm only getting started. Sincere thanks to Suresh and the team at PCC for opening this door."
+  },
+  {
+    name: "Shaila Mudigonda",
+    northStar: "Deliver meaningful customer & business outcomes — consistently and predictably. AI skills to create shippable prototypes that build excitement, and clear specs for engineering to build with excellence.",
+    gap: "Venture.",
+    giving: "Can teach business analysis / product management tips.",
+    tools: ["Claude", "ChatGPT", "Gemini", "Lovable", "GitHub Copilot"],
+    site: "https://shailamudigonda.lovable.app/",
+    portfolio: "https://www.linkedin.com/in/shailamudigonda",
+    learnings: "Learned to use AI prompting.",
+    testimonial: "Skill Forward has created something truly special — a space where people looking for work can come together, learn together, and grow together. What started as a community has become a movement. Through conversations, hands-on projects, and real collaboration, we're not just learning AI — we're building confidence, capability, and momentum. For many of us, Skill Forward has been the bridge between uncertainty and opportunity. Skill Forward isn't just teaching skills. It's helping people believe in what's possible again."
+  },
+  {
+    name: "Corinne Nakashima",
+    northStar: "Rapid dev and deployment — can immediately help my friends and community with a variety of website-based projects.",
+    gap: "Knowledge of ML and AI dev such as PyTorch and RAG LLM dev.",
+    giving: "How to use Git and GitHub for proper code review and dev, JIRA and Agile processes, and Python. Hoping to learn more about RAG-LLM and PyTorch.",
+    tools: ["Gemini", "Lovable", "GitHub Copilot"],
+    site: "https://corinne-s-public-portfolio.vercel.app/",
+    portfolio: "https://github.com/sepranagw",
+    learnings: "Learned about migrating from GitHub to Claude Code agent dev on personal device.",
+    testimonial: "This will help develop your confidence in basic AI tool skills — with a supportive, friendly community as well."
+  },
+  {
+    name: "AdeBunmi Adeyemo",
+    northStar: "The unlimited potential AI opens, and getting to creatively build something and add on to it.",
+    gap: "AI software engineering / model building, or advanced vibe coding with more proofs of work.",
+    giving: "Business mindset and technologically savvy. Hoping to learn from others' great ideas and approaches on how to use AI.",
+    tools: ["Gemini", "Lovable"],
+    site: "https://adebunmi-adeyemo.lovable.app/",
+    portfolio: "https://www.linkedin.com/in/adebunmi-adeyemo",
+    learnings: "Learned about the different AI tools and categories and the differences between them. Got to explore an AI tool new to me in a fun and productive way.",
+    testimonial: ""
+  }
+];

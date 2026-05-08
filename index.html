@@ -1,0 +1,976 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SkillForward · Cohort Portfolios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f0e8;
+    --bg-2: #ebe5d8;
+    --ink: #1a1714;
+    --ink-2: #4a4338;
+    --ink-3: #8a8170;
+    --rule: #d9d1bf;
+    --rule-strong: #b8ad95;
+    --accent: oklch(46% 0.07 145);
+    --accent-soft: oklch(46% 0.07 145 / 0.08);
+    --quote: oklch(46% 0.07 145);
+    --paper: #faf7f0;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a { color: var(--ink); text-decoration: none; }
+  a:hover { color: var(--accent); }
+
+  /* ====== Masthead ====== */
+  .masthead {
+    border-bottom: 1px solid var(--rule-strong);
+    padding: 22px 40px 18px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    backdrop-filter: blur(6px);
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+  }
+  .brand {
+    font-family: "Newsreader", Georgia, serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .brand-mark {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--accent);
+    position: relative;
+  }
+  .brand-mark::after {
+    content: ""; position: absolute; inset: 6px;
+    border-radius: 50%; background: var(--bg);
+  }
+  .meta {
+    display: flex; gap: 28px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-3);
+  }
+  .meta b { color: var(--ink); font-weight: 500; }
+
+  /* ====== Hero ====== */
+  .hero {
+    padding: 80px 40px 60px;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 60px;
+    align-items: end;
+    border-bottom: 1px solid var(--rule);
+  }
+  .eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-family: "Newsreader", serif;
+    font-weight: 400;
+    font-size: clamp(48px, 7vw, 92px);
+    line-height: 0.96;
+    letter-spacing: -0.025em;
+    margin: 0 0 22px;
+    text-wrap: balance;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+  .hero .lede {
+    font-family: "Newsreader", serif;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    max-width: 56ch;
+    text-wrap: pretty;
+  }
+  .stats {
+    display: grid;
+    gap: 20px;
+    text-align: right;
+    font-family: "JetBrains Mono", monospace;
+  }
+  .stat .num {
+    font-family: "Newsreader", serif;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .stat .lbl {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-3);
+    margin-top: 4px;
+  }
+
+  /* ====== Filters ====== */
+  .toolbar {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 24px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    border-bottom: 1px solid var(--rule);
+    flex-wrap: wrap;
+  }
+  .filters {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .chip {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 7px 12px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-2);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .chip:hover { border-color: var(--ink); color: var(--ink); }
+  .chip.active {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+  .chip .ct { opacity: 0.55; margin-left: 6px; }
+  .chip.active .ct { opacity: 0.7; }
+
+  .count {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-3);
+  }
+
+  /* ====== Gallery ====== */
+  .gallery {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 40px 120px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .card {
+    background: var(--paper);
+    padding: 28px 28px 24px;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.2s ease;
+    cursor: pointer;
+    min-height: 540px;
+    position: relative;
+  }
+  .card:hover { background: #fefcf6; }
+  .card:hover .thumb-frame { border-color: var(--ink); }
+  .card:hover .openhint { opacity: 1; transform: translateX(0); }
+
+  /* Header: name + index */
+  .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .card-name {
+    font-family: "Newsreader", serif;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .card-num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    color: var(--ink-3);
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+  }
+
+  /* Summary (above thumb) */
+  .summary {
+    font-family: "Newsreader", serif;
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    margin: 14px 0 18px;
+    text-wrap: pretty;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Tools row */
+  .tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 6px;
+    margin-bottom: 16px;
+  }
+  .tool {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-2);
+    padding: 3px 7px;
+    background: var(--bg-2);
+    border-radius: 3px;
+  }
+
+  /* Thumbnail / portfolio frame */
+  .thumb-wrap { margin-bottom: 16px; }
+  .thumb-frame {
+    aspect-ratio: 16 / 10;
+    border: 1px solid var(--rule-strong);
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    transition: border-color 0.15s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 14px 16px;
+    color: var(--paper);
+  }
+  /* Soft grid texture overlay */
+  .thumb-frame::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+  /* Big initials behind */
+  .thumb-mono {
+    position: absolute;
+    right: -8px; bottom: -36px;
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 180px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: rgba(255,255,255,0.13);
+    pointer-events: none;
+    user-select: none;
+  }
+  .thumb-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    opacity: 0.7;
+    z-index: 2;
+    position: relative;
+  }
+  .thumb-bottom {
+    z-index: 2;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .thumb-domain {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    opacity: 0.95;
+  }
+  .thumb-cta {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    opacity: 0.6;
+  }
+  .thumb-frame.no-site {
+    background: var(--paper) !important;
+    color: var(--ink-3);
+  }
+  .thumb-frame.no-site::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(
+        45deg,
+        var(--bg-2) 0 6px,
+        transparent 6px 12px
+      );
+    opacity: 0.5;
+  }
+  .thumb-frame.no-site .thumb-mono { color: rgba(0,0,0,0.07); }
+
+  /* Testimonial */
+  .testimonial {
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    position: relative;
+  }
+  .testimonial-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--quote);
+    margin-bottom: 8px;
+  }
+  .testimonial-quote {
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0;
+    text-wrap: pretty;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .testimonial-quote::before { content: "\201C"; margin-right: 1px; }
+  .testimonial-quote::after  { content: "\201D"; margin-left: 1px; }
+  .testimonial-empty {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-3);
+    margin: 0;
+  }
+
+  .openhint {
+    position: absolute;
+    bottom: 24px; right: 28px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: all 0.18s ease;
+  }
+
+  /* ====== Detail Overlay ====== */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: color-mix(in srgb, var(--ink) 60%, transparent);
+    backdrop-filter: blur(8px);
+    display: none;
+    z-index: 50;
+    overflow-y: auto;
+    padding: 40px 20px;
+  }
+  .overlay.open { display: block; }
+  .sheet {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: var(--paper);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.4);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 70vh;
+  }
+  .sheet-close {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 1px solid var(--rule-strong);
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 60;
+    font-family: "Newsreader", serif;
+  }
+  .sheet-close:hover { background: var(--bg); }
+
+  .sheet-left {
+    padding: 48px;
+    border-right: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+  }
+  .sheet-right {
+    padding: 48px;
+    background: var(--bg-2);
+  }
+
+  .sheet-eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+  .sheet h2 {
+    font-family: "Newsreader", serif;
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 24px;
+    text-wrap: balance;
+  }
+
+  .sheet-section {
+    margin-bottom: 28px;
+  }
+  .sheet-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-3);
+    margin-bottom: 8px;
+  }
+  .sheet-body {
+    font-family: "Newsreader", serif;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+
+  .sheet-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  .sheet-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 3px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    transition: all 0.15s ease;
+  }
+  .sheet-link:hover {
+    border-color: var(--ink);
+    background: var(--bg);
+  }
+  .sheet-link .lt {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-3);
+  }
+  .sheet-link .lv {
+    color: var(--ink);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 60%;
+  }
+
+  .sheet-quote {
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.4;
+    color: var(--ink);
+    text-wrap: pretty;
+    margin: 0;
+  }
+  .sheet-quote::before {
+    content: "\201C";
+    font-style: italic;
+    font-size: 60px;
+    line-height: 0;
+    vertical-align: -0.4em;
+    color: var(--accent);
+    margin-right: 6px;
+  }
+  .sheet-attribution {
+    margin-top: 24px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-3);
+  }
+  .sheet-attribution b {
+    display: block;
+    color: var(--ink);
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 16px;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-top: 4px;
+  }
+
+  .sheet-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .sheet-tool {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: var(--ink);
+    padding: 4px 10px;
+    background: var(--paper);
+    border: 1px solid var(--rule-strong);
+    border-radius: 3px;
+  }
+
+  /* ====== Footer ====== */
+  footer {
+    border-top: 1px solid var(--rule-strong);
+    padding: 40px;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-3);
+    flex-wrap: wrap;
+  }
+  footer .colophon {
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-size: 14px;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--ink-2);
+    max-width: 50ch;
+  }
+
+  .thumb-frame.has-screenshot { padding: 0; }
+  .thumb-frame.has-screenshot img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top center;
+  }
+  .thumb-screenshot-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 32px 14px 10px;
+    background: linear-gradient(to top, rgba(0,0,0,0.55), transparent);
+    z-index: 3;
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .thumb-screenshot-caption .sd {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px; letter-spacing: 0.03em;
+    color: rgba(255,255,255,0.9);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .thumb-screenshot-caption .sc {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.6); flex-shrink: 0; margin-left: 8px;
+  }
+
+  @media (max-width: 800px) {
+    .masthead { padding: 16px 20px; flex-wrap: wrap; }
+    .hero { padding: 48px 20px 40px; grid-template-columns: 1fr; gap: 32px; }
+    .stats { text-align: left; grid-template-columns: 1fr 1fr; }
+    .toolbar { padding: 20px; }
+    .gallery { padding: 24px 20px 60px; grid-template-columns: 1fr; }
+    .sheet { grid-template-columns: 1fr; }
+    .sheet-left, .sheet-right { padding: 32px; }
+    .sheet-left { border-right: none; border-bottom: 1px solid var(--rule); }
+    .sheet h2 { font-size: 32px; }
+    footer { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="brand">
+    <span class="brand-mark"></span>
+    <span>Skill&#8209;Forward</span>
+  </div>
+  <div class="meta">
+    <span><b>Cohort 01</b> &nbsp;·&nbsp; Portland, OR</span>
+    <span>5&#8209;Hour Submissions</span>
+    <span>Spring 2026</span>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <div class="eyebrow">— Cohort showcase</div>
+    <h1>Twenty-three people, <em>five hours</em>, a portfolio each.</h1>
+    <p class="lede">Builders, mentors, product folks and first-time coders sat down with a handful of AI tools and — over five hours — walked out with something live on the internet. This is the gallery: a summary of what each person is after, the work they shipped, and what they had to say about the program.</p>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <div class="num" id="stat-people">23</div>
+      <div class="lbl">Participants</div>
+    </div>
+    <div class="stat">
+      <div class="num" id="stat-sites">22</div>
+      <div class="lbl">Live sites</div>
+    </div>
+    <div class="stat">
+      <div class="num" id="stat-tools">15</div>
+      <div class="lbl">Tools used</div>
+    </div>
+  </div>
+</section>
+
+<div class="toolbar">
+  <div class="filters" id="filters"></div>
+  <div class="count" id="count">— 23 portfolios</div>
+</div>
+
+<main class="gallery" id="gallery"></main>
+
+<footer>
+  <div class="colophon">An informal look-book of the Skill-Forward 5-hour cohort. Scroll, click any card, follow the work.</div>
+  <div>© 2026 · Skill-Forward · Portland Community College</div>
+</footer>
+
+<!-- Detail overlay -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true">
+  <button class="sheet-close" id="sheet-close" aria-label="Close">×</button>
+  <div class="sheet" id="sheet"></div>
+</div>
+
+<script src="cohort-data.js"></script>
+<script>
+(function() {
+  const data = window.COHORT;
+
+  // ---- Stats ----
+  document.getElementById('stat-people').textContent = String(data.length).padStart(2, '0');
+  const liveSites = data.filter(d => d.site && d.site.startsWith('http')).length;
+  document.getElementById('stat-sites').textContent = String(liveSites).padStart(2, '0');
+  const allTools = new Set();
+  data.forEach(d => d.tools.forEach(t => allTools.add(t)));
+  document.getElementById('stat-tools').textContent = String(allTools.size).padStart(2, '0');
+
+  // ---- Filters ----
+  const toolCounts = {};
+  data.forEach(d => d.tools.forEach(t => { toolCounts[t] = (toolCounts[t] || 0) + 1; }));
+  const sortedTools = Object.entries(toolCounts).sort((a,b) => b[1]-a[1]);
+
+  const filtersEl = document.getElementById('filters');
+  const allChip = chip('All', data.length, true);
+  allChip.dataset.tool = '__all';
+  filtersEl.appendChild(allChip);
+  sortedTools.slice(0, 8).forEach(([tool, ct]) => {
+    const c = chip(tool, ct, false);
+    c.dataset.tool = tool;
+    filtersEl.appendChild(c);
+  });
+
+  function chip(label, count, active) {
+    const b = document.createElement('button');
+    b.className = 'chip' + (active ? ' active' : '');
+    b.innerHTML = `${label}<span class="ct">${count}</span>`;
+    return b;
+  }
+
+  filtersEl.addEventListener('click', e => {
+    const t = e.target.closest('.chip');
+    if (!t) return;
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    t.classList.add('active');
+    render(t.dataset.tool);
+  });
+
+  // ---- Render gallery ----
+  const galleryEl = document.getElementById('gallery');
+  const countEl = document.getElementById('count');
+
+  function render(filter) {
+    const list = (filter === '__all' || !filter)
+      ? data
+      : data.filter(d => d.tools.includes(filter));
+
+    countEl.textContent = `— ${list.length} portfolio${list.length === 1 ? '' : 's'}`;
+    galleryEl.innerHTML = '';
+    list.forEach((person, i) => {
+      const idx = data.indexOf(person);
+      galleryEl.appendChild(makeCard(person, idx));
+    });
+  }
+
+  function makeCard(p, idx) {
+    const card = document.createElement('article');
+    card.className = 'card';
+    card.dataset.idx = idx;
+
+    const portfolioUrl = p.site || p.portfolio;
+    const isLive = portfolioUrl && portfolioUrl.startsWith('http');
+    const displayUrl = isLive ? portfolioUrl.replace(/^https?:\/\//, '').replace(/\/$/, '') : 'no live site';
+
+    const toolsHtml = p.tools.map(t => `<span class="tool">${escapeHtml(t)}</span>`).join('');
+
+    let testimonialHtml;
+    if (p.testimonial && p.testimonial.trim()) {
+      testimonialHtml = `
+        <div class="testimonial-label">On Skill-Forward</div>
+        <p class="testimonial-quote">${escapeHtml(p.testimonial.trim())}</p>
+      `;
+    } else {
+      testimonialHtml = `<p class="testimonial-empty">— testimonial pending</p>`;
+    }
+
+    const initials = p.name.split(/\s+/).map(w => w[0]).filter(Boolean).slice(0,2).join('');
+    const host = isLive ? hostFor(portfolioUrl) : '';
+    const bg = colorFor(p.name);
+
+    const thumbHtml = isLive
+      ? `<div class="thumb-frame has-screenshot" style="background:${bg};"
+             data-initials="${escapeAttr(initials)}" data-host="${escapeAttr(host)}" data-display="${escapeAttr(displayUrl)}">
+           <img src="https://api.microlink.io/?url=${encodeURIComponent(portfolioUrl)}&screenshot=true&meta=false&embed=screenshot.url"
+                alt="${escapeAttr(p.name)} portfolio preview" loading="lazy"
+                onerror="thumbFallback(this)">
+           <div class="thumb-screenshot-caption">
+             <span class="sd">${escapeHtml(displayUrl)}</span>
+             <span class="sc">Open ↗</span>
+           </div>
+         </div>`
+      : `<div class="thumb-frame no-site">
+           <div class="thumb-mono">${escapeHtml(initials)}</div>
+           <div class="thumb-top" style="color:var(--ink-3);"><span>Profile only</span><span>—</span></div>
+           <div class="thumb-bottom" style="color:var(--ink-2);">
+             <div class="thumb-domain">${escapeHtml(p.portfolio ? hostFor(p.portfolio) : 'no link submitted')}</div>
+             <div class="thumb-cta" style="color:var(--ink-3);">No live site</div>
+           </div>
+         </div>`;
+
+    card.innerHTML = `
+      <div class="card-head">
+        <h3 class="card-name">${escapeHtml(p.name)}</h3>
+        <span class="card-num">${String(idx + 1).padStart(2,'0')} / ${String(data.length).padStart(2,'0')}</span>
+      </div>
+      <p class="summary">${escapeHtml(p.northStar)}</p>
+      <div class="tools">${toolsHtml}</div>
+      <div class="thumb-wrap">${thumbHtml}</div>
+      <div class="testimonial">${testimonialHtml}</div>
+      <span class="openhint">View →</span>
+    `;
+
+    card.addEventListener('click', e => {
+      // Don't open overlay if user clicked an actual link inside (none yet)
+      openSheet(idx);
+    });
+
+    return card;
+  }
+
+  // ---- Detail sheet ----
+  const overlay = document.getElementById('overlay');
+  const sheetEl = document.getElementById('sheet');
+  const closeBtn = document.getElementById('sheet-close');
+
+  function openSheet(idx) {
+    const p = data[idx];
+    const toolsHtml = p.tools.map(t => `<span class="sheet-tool">${escapeHtml(t)}</span>`).join('');
+
+    const links = [];
+    if (p.site)      links.push({ lbl: 'Site', val: p.site });
+    if (p.portfolio && p.portfolio !== p.site) links.push({ lbl: 'Portfolio', val: p.portfolio });
+    const linksHtml = links.map(l => {
+      const display = l.val.replace(/^https?:\/\//, '').replace(/\/$/, '');
+      return `<a class="sheet-link" href="${escapeAttr(l.val)}" target="_blank" rel="noopener">
+        <span class="lt">${l.lbl}</span><span class="lv">${escapeHtml(display)} ↗</span>
+      </a>`;
+    }).join('');
+
+    const testimonial = (p.testimonial && p.testimonial.trim())
+      ? `<p class="sheet-quote">${escapeHtml(p.testimonial.trim())}</p>
+         <div class="sheet-attribution">— Testimonial<b>${escapeHtml(p.name)}</b></div>`
+      : `<p class="sheet-quote" style="color:var(--ink-3); font-style: normal; font-size: 16px;">No testimonial submitted yet.</p>
+         <div class="sheet-attribution"><b>${escapeHtml(p.name)}</b></div>`;
+
+    sheetEl.innerHTML = `
+      <div class="sheet-left">
+        <div class="sheet-eyebrow">— Participant ${String(idx+1).padStart(2,'0')} of ${data.length}</div>
+        <h2>${escapeHtml(p.name)}</h2>
+
+        <div class="sheet-section">
+          <div class="sheet-label">North Star</div>
+          <div class="sheet-body">${escapeHtml(p.northStar)}</div>
+        </div>
+
+        <div class="sheet-section">
+          <div class="sheet-label">The gap that matters</div>
+          <div class="sheet-body">${escapeHtml(p.gap)}</div>
+        </div>
+
+        <div class="sheet-section">
+          <div class="sheet-label">Giving &amp; getting</div>
+          <div class="sheet-body">${escapeHtml(p.giving)}</div>
+        </div>
+
+        <div class="sheet-section">
+          <div class="sheet-label">Tools used</div>
+          <div class="sheet-tools">${toolsHtml}</div>
+        </div>
+
+        <div class="sheet-links">${linksHtml || '<div class="sheet-label">No links submitted</div>'}</div>
+      </div>
+      <div class="sheet-right">
+        <div class="sheet-eyebrow">— What they shipped</div>
+        <div class="sheet-section">
+          <div class="sheet-label">Learnings</div>
+          <div class="sheet-body">${escapeHtml(p.learnings)}</div>
+        </div>
+        <div class="sheet-section" style="margin-top: 40px;">
+          <div class="sheet-label">In their own words</div>
+          ${testimonial}
+        </div>
+      </div>
+    `;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSheet() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn.addEventListener('click', closeSheet);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeSheet(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); });
+
+  // ---- Helpers ----
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({
+      '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+    }[c]));
+  }
+  function escapeAttr(s) { return escapeHtml(s); }
+
+  function hostFor(url) {
+    try { return new URL(url).hostname.replace(/^www\./, ''); }
+    catch (e) { return url.replace(/^https?:\/\//, '').split('/')[0]; }
+  }
+
+  // Deterministic muted palette — varied hues, all low chroma + medium-dark L
+  function colorFor(name) {
+    let h = 0;
+    for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
+    const palette = [
+      '#3f4a3a', // deep moss
+      '#3d4452', // slate
+      '#4a3d3a', // umber
+      '#3a4248', // teal-graphite
+      '#4c4434', // olive bronze
+      '#3e3a4a', // aubergine
+      '#34423f', // pine
+      '#4a3f3d', // cocoa
+      '#3a4540', // forest
+      '#444041', // ink
+      '#3d4640', // dark sage
+      '#4a4538'  // tobacco
+    ];
+    return palette[h % palette.length];
+  }
+
+  window.thumbFallback = function(img) {
+    const frame = img.closest('.thumb-frame');
+    frame.classList.remove('has-screenshot');
+    const i = frame.dataset.initials;
+    const h = frame.dataset.host;
+    const d = frame.dataset.display;
+    frame.innerHTML = `
+      <div class="thumb-mono">${i}</div>
+      <div class="thumb-top"><span>Portfolio</span><span>${h}</span></div>
+      <div class="thumb-bottom">
+        <div class="thumb-domain">${d}</div>
+        <div class="thumb-cta">Open ↗</div>
+      </div>
+    `;
+  };
+
+  render('__all');
+})();
+</script>
+</body>
+</html>
