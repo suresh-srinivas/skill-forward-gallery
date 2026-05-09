@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SkillForward · Testimonials</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f0e8;
+    --bg-2: #ebe5d8;
+    --ink: #1a1714;
+    --ink-2: #4a4338;
+    --ink-3: #8a8170;
+    --rule: #d9d1bf;
+    --rule-strong: #b8ad95;
+    --accent: oklch(46% 0.07 145);
+    --accent-soft: oklch(46% 0.07 145 / 0.08);
+    --paper: #faf7f0;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a { color: var(--ink); text-decoration: none; }
+  a:hover { color: var(--accent); }
+
+  /* ====== Masthead ====== */
+  .masthead {
+    border-bottom: 1px solid var(--rule-strong);
+    padding: 22px 40px 18px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    backdrop-filter: blur(6px);
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+  }
+  .brand {
+    font-family: "Newsreader", Georgia, serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .brand-mark {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--accent);
+    position: relative;
+  }
+  .brand-mark::after {
+    content: ""; position: absolute; inset: 6px;
+    border-radius: 50%; background: var(--bg);
+  }
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-3);
+    align-items: center;
+  }
+  .nav-links a { color: var(--ink-3); }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links .active { color: var(--ink); }
+
+  /* ====== Hero ====== */
+  .hero {
+    padding: 80px 40px 60px;
+    max-width: 1280px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--rule);
+  }
+  .eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-family: "Newsreader", serif;
+    font-weight: 400;
+    font-size: clamp(40px, 6vw, 80px);
+    line-height: 0.96;
+    letter-spacing: -0.025em;
+    margin: 0 0 22px;
+    text-wrap: balance;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero .lede {
+    font-family: "Newsreader", serif;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    max-width: 56ch;
+    text-wrap: pretty;
+    margin: 0;
+  }
+
+  /* ====== Testimonial grid ====== */
+  .tgallery {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 40px 120px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .tcard {
+    background: var(--paper);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.2s ease;
+  }
+  .tcard:hover { background: #fefcf6; }
+  .tcard:hover .tcard-thumb { border-color: var(--ink); }
+
+  /* Thumbnail */
+  .tcard-thumb {
+    aspect-ratio: 16 / 9;
+    border-bottom: 1px solid var(--rule-strong);
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: border-color 0.15s ease;
+  }
+  .tcard-thumb img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top center;
+  }
+  /* Initials fallback */
+  .tcard-thumb .thumb-fallback {
+    position: absolute; inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 14px 16px;
+  }
+  .tcard-thumb .thumb-fallback::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+  .tcard-thumb .initials-bg {
+    position: absolute;
+    right: -8px; bottom: -36px;
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-size: 180px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: rgba(255,255,255,0.13);
+    pointer-events: none;
+    user-select: none;
+  }
+  .tcard-thumb .thumb-name {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.7);
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Card body */
+  .tcard-body {
+    padding: 22px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .tcard-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .tcard-name {
+    font-family: "Newsreader", serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .tcard-disc {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 2px 8px;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+  .tcard-quote {
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink);
+    margin: 0 0 16px;
+    text-wrap: pretty;
+    flex: 1;
+  }
+  .tcard-quote::before {
+    content: "\201C";
+    font-size: 40px;
+    line-height: 0;
+    vertical-align: -0.35em;
+    color: var(--accent);
+    margin-right: 4px;
+    font-style: normal;
+  }
+  .tcard-site {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-3);
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .tcard-site a { color: var(--accent); }
+  .tcard-site a:hover { text-decoration: underline; }
+
+  /* ====== Footer ====== */
+  footer {
+    border-top: 1px solid var(--rule-strong);
+    padding: 40px;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-3);
+    flex-wrap: wrap;
+  }
+  footer .colophon {
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-size: 14px;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--ink-2);
+    max-width: 50ch;
+  }
+
+  @media (max-width: 800px) {
+    .masthead { padding: 16px 20px; flex-wrap: wrap; }
+    .hero { padding: 48px 20px 40px; }
+    .tgallery { padding: 24px 20px 60px; grid-template-columns: 1fr; }
+    footer { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="brand">
+    <span class="brand-mark"></span>
+    <span>Skill&#8209;Forward</span>
+  </div>
+  <nav class="nav-links">
+    <a href="index.html">← Portfolios</a>
+    <span class="active">Testimonials</span>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">— In their own words</div>
+  <h1>What the cohort <em>said.</em></h1>
+  <p class="lede">Twenty-three professionals. Five hours. Here's how they described the experience — unprompted, unedited.</p>
+</section>
+
+<main class="tgallery" id="tgallery"></main>
+
+<footer>
+  <div class="colophon">An informal look-book of the Skill-Forward 5-hour cohort. Scroll, click any card, follow the work.</div>
+  <div>© 2026 · Skill-Forward · Portland Community College</div>
+</footer>
+
+<script src="cohort-data.js"></script>
+<script>
+(function() {
+  const data = window.COHORT.filter(d => d.testimonial && d.testimonial.trim());
+  const galleryEl = document.getElementById('tgallery');
+
+  data.forEach(p => {
+    const portfolioUrl = p.site || p.portfolio;
+    const isLive = portfolioUrl && portfolioUrl.startsWith('http');
+    const initials = p.name.split(/\s+/).map(w => w[0]).filter(Boolean).slice(0,2).join('');
+    const bg = colorFor(p.name);
+    const displayUrl = isLive ? portfolioUrl.replace(/^https?:\/\//, '').replace(/\/$/, '') : null;
+
+    const thumbHtml = isLive
+      ? `<div class="tcard-thumb" data-initials="${escapeAttr(initials)}" data-bg="${escapeAttr(bg)}" data-name="${escapeAttr(p.name)}">
+           <img src="https://api.microlink.io/?url=${encodeURIComponent(portfolioUrl)}&screenshot=true&meta=false&embed=screenshot.url"
+                alt="${escapeAttr(p.name)} portfolio"
+                loading="lazy"
+                onerror="thumbFallback(this)">
+         </div>`
+      : `<div class="tcard-thumb" style="background:${bg};">
+           <div class="thumb-fallback">
+             <span class="thumb-name">${escapeHtml(p.name)}</span>
+             <span class="initials-bg">${escapeHtml(initials)}</span>
+           </div>
+         </div>`;
+
+    const siteHtml = isLive
+      ? `<div class="tcard-site"><span>${escapeHtml(displayUrl)}</span><a href="${escapeAttr(portfolioUrl)}" target="_blank" rel="noopener">View Portfolio ↗</a></div>`
+      : `<div class="tcard-site"><span>No live site</span></div>`;
+
+    const card = document.createElement('article');
+    card.className = 'tcard';
+    card.innerHTML = `
+      ${thumbHtml}
+      <div class="tcard-body">
+        <div class="tcard-meta">
+          <h3 class="tcard-name">${escapeHtml(p.name)}</h3>
+          <span class="tcard-disc">${escapeHtml(p.discipline)}</span>
+        </div>
+        <p class="tcard-quote">${escapeHtml(p.testimonial.trim())}</p>
+        ${siteHtml}
+      </div>
+    `;
+    galleryEl.appendChild(card);
+  });
+
+  window.thumbFallback = function(img) {
+    const frame = img.closest('.tcard-thumb');
+    const i = frame.dataset.initials;
+    const bg = frame.dataset.bg;
+    const name = frame.dataset.name;
+    frame.style.background = bg;
+    img.remove();
+    frame.innerHTML = `
+      <div class="thumb-fallback">
+        <span class="thumb-name">${escapeHtml(name)}</span>
+        <span class="initials-bg">${escapeHtml(i)}</span>
+      </div>
+    `;
+  };
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({
+      '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+    }[c]));
+  }
+  function escapeAttr(s) { return escapeHtml(s); }
+
+  function colorFor(name) {
+    let h = 0;
+    for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
+    const palette = [
+      '#3f4a3a','#3d4452','#4a3d3a','#3a4248','#4c4434',
+      '#3e3a4a','#34423f','#4a3f3d','#3a4540','#444041',
+      '#3d4640','#4a4538'
+    ];
+    return palette[h % palette.length];
+  }
+})();
+</script>
+</body>
+</html>
