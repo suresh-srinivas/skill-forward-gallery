@@ -149,11 +149,32 @@
     margin: 0 auto;
     padding: 24px 40px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: 24px;
+    gap: 16px;
     border-bottom: 1px solid var(--rule);
     flex-wrap: wrap;
+  }
+  .filter-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+  .filter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .filter-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-3);
+    flex-shrink: 0;
+    width: 68px;
   }
   .filters {
     display: flex;
@@ -214,7 +235,7 @@
   }
   .card:hover { background: #fefcf6; }
   .card:hover .thumb-frame { border-color: var(--ink); }
-  .card:hover .openhint { opacity: 1; transform: translateX(0); }
+  .card:hover .portfolio-btn:not(.no-link) { background: var(--accent); }
 
   /* Header: name + index */
   .card-head {
@@ -365,56 +386,41 @@
   }
   .thumb-frame.no-site .thumb-mono { color: rgba(0,0,0,0.07); }
 
-  /* Testimonial */
-  .testimonial {
-    margin-top: auto;
-    padding-top: 18px;
-    border-top: 1px solid var(--rule);
-    position: relative;
-  }
-  .testimonial-label {
+  /* Discipline badge on card */
+  .card-disc {
     font-family: "JetBrains Mono", monospace;
-    font-size: 9.5px;
+    font-size: 9px;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--quote);
-    margin-bottom: 8px;
-  }
-  .testimonial-quote {
-    font-family: "Newsreader", serif;
-    font-style: italic;
-    font-size: 15px;
-    line-height: 1.5;
-    color: var(--ink);
-    margin: 0;
-    text-wrap: pretty;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  .testimonial-quote::before { content: "\201C"; margin-right: 1px; }
-  .testimonial-quote::after  { content: "\201D"; margin-left: 1px; }
-  .testimonial-empty {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--ink-3);
-    margin: 0;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 2px 8px;
+    border-radius: 999px;
+    flex-shrink: 0;
   }
 
-  .openhint {
-    position: absolute;
-    bottom: 24px; right: 28px;
+  /* Portfolio CTA button */
+  .portfolio-btn {
+    display: block;
+    margin-top: auto;
+    padding: 10px 16px;
+    background: var(--ink);
+    color: var(--bg);
     font-family: "JetBrains Mono", monospace;
     font-size: 10px;
-    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--accent);
-    opacity: 0;
-    transform: translateX(-4px);
-    transition: all 0.18s ease;
+    letter-spacing: 0.1em;
+    border-radius: 3px;
+    text-align: center;
+    transition: background 0.15s ease;
+    border: none;
+  }
+  .portfolio-btn:hover { background: var(--accent); color: var(--bg); }
+  .portfolio-btn.no-link {
+    background: var(--bg-2);
+    color: var(--ink-3);
+    cursor: default;
+    pointer-events: none;
   }
 
   /* ====== Detail Overlay ====== */
@@ -654,6 +660,7 @@
     .hero { padding: 48px 20px 40px; grid-template-columns: 1fr; gap: 32px; }
     .stats { text-align: left; grid-template-columns: 1fr 1fr; }
     .toolbar { padding: 20px; }
+    .filter-label { width: auto; }
     .gallery { padding: 24px 20px 60px; grid-template-columns: 1fr; }
     .sheet { grid-template-columns: 1fr; }
     .sheet-left, .sheet-right { padding: 32px; }
@@ -700,7 +707,16 @@
 </section>
 
 <div class="toolbar">
-  <div class="filters" id="filters"></div>
+  <div class="filter-groups">
+    <div class="filter-group">
+      <span class="filter-label">Discipline</span>
+      <div class="filters" id="disc-filters"></div>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Tools</span>
+      <div class="filters" id="tool-filters"></div>
+    </div>
+  </div>
   <div class="count" id="count">— 23 portfolios</div>
 </div>
 
@@ -730,20 +746,9 @@
   data.forEach(d => d.tools.forEach(t => allTools.add(t)));
   document.getElementById('stat-tools').textContent = String(allTools.size).padStart(2, '0');
 
-  // ---- Filters ----
-  const toolCounts = {};
-  data.forEach(d => d.tools.forEach(t => { toolCounts[t] = (toolCounts[t] || 0) + 1; }));
-  const sortedTools = Object.entries(toolCounts).sort((a,b) => b[1]-a[1]);
-
-  const filtersEl = document.getElementById('filters');
-  const allChip = chip('All', data.length, true);
-  allChip.dataset.tool = '__all';
-  filtersEl.appendChild(allChip);
-  sortedTools.slice(0, 8).forEach(([tool, ct]) => {
-    const c = chip(tool, ct, false);
-    c.dataset.tool = tool;
-    filtersEl.appendChild(c);
-  });
+  // ---- Filter state ----
+  let activeDisc = '__all';
+  let activeTool = '__all';
 
   function chip(label, count, active) {
     const b = document.createElement('button');
@@ -752,26 +757,67 @@
     return b;
   }
 
-  filtersEl.addEventListener('click', e => {
+  // Discipline filters
+  const disciplines = ['Engineering', 'Data', 'Product', 'Operations', 'Business'];
+  const discCounts = {};
+  data.forEach(d => { discCounts[d.discipline] = (discCounts[d.discipline] || 0) + 1; });
+
+  const discFiltersEl = document.getElementById('disc-filters');
+  const allDiscChip = chip('All', data.length, true);
+  allDiscChip.dataset.disc = '__all';
+  discFiltersEl.appendChild(allDiscChip);
+  disciplines.forEach(disc => {
+    if (!discCounts[disc]) return;
+    const c = chip(disc, discCounts[disc], false);
+    c.dataset.disc = disc;
+    discFiltersEl.appendChild(c);
+  });
+
+  discFiltersEl.addEventListener('click', e => {
     const t = e.target.closest('.chip');
-    if (!t) return;
-    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    if (!t || !('disc' in t.dataset)) return;
+    discFiltersEl.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
     t.classList.add('active');
-    render(t.dataset.tool);
+    activeDisc = t.dataset.disc;
+    render();
+  });
+
+  // Tool filters
+  const toolCounts = {};
+  data.forEach(d => d.tools.forEach(t => { toolCounts[t] = (toolCounts[t] || 0) + 1; }));
+  const sortedTools = Object.entries(toolCounts).sort((a,b) => b[1]-a[1]);
+
+  const toolFiltersEl = document.getElementById('tool-filters');
+  const allToolChip = chip('All', data.length, true);
+  allToolChip.dataset.tool = '__all';
+  toolFiltersEl.appendChild(allToolChip);
+  sortedTools.slice(0, 8).forEach(([tool, ct]) => {
+    const c = chip(tool, ct, false);
+    c.dataset.tool = tool;
+    toolFiltersEl.appendChild(c);
+  });
+
+  toolFiltersEl.addEventListener('click', e => {
+    const t = e.target.closest('.chip');
+    if (!t || !('tool' in t.dataset)) return;
+    toolFiltersEl.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    t.classList.add('active');
+    activeTool = t.dataset.tool;
+    render();
   });
 
   // ---- Render gallery ----
   const galleryEl = document.getElementById('gallery');
   const countEl = document.getElementById('count');
 
-  function render(filter) {
-    const list = (filter === '__all' || !filter)
-      ? data
-      : data.filter(d => d.tools.includes(filter));
+  function render() {
+    let list = data;
+    if (activeDisc !== '__all') list = list.filter(d => d.discipline === activeDisc);
+    if (activeTool !== '__all') list = list.filter(d => d.tools.includes(activeTool));
 
     countEl.textContent = `— ${list.length} portfolio${list.length === 1 ? '' : 's'}`;
     galleryEl.innerHTML = '';
-    list.forEach((person, i) => {
+    list.forEach(person => {
       const idx = data.indexOf(person);
       galleryEl.appendChild(makeCard(person, idx));
     });
@@ -784,22 +830,12 @@
 
     const portfolioUrl = p.site || p.portfolio;
     const isLive = portfolioUrl && portfolioUrl.startsWith('http');
-    const displayUrl = isLive ? portfolioUrl.replace(/^https?:\/\//, '').replace(/\/$/, '') : 'no live site';
 
     const toolsHtml = p.tools.map(t => `<span class="tool">${escapeHtml(t)}</span>`).join('');
 
-    let testimonialHtml;
-    if (p.testimonial && p.testimonial.trim()) {
-      testimonialHtml = `
-        <div class="testimonial-label">On Skill-Forward</div>
-        <p class="testimonial-quote">${escapeHtml(p.testimonial.trim())}</p>
-      `;
-    } else {
-      testimonialHtml = `<p class="testimonial-empty">— testimonial pending</p>`;
-    }
-
     const initials = p.name.split(/\s+/).map(w => w[0]).filter(Boolean).slice(0,2).join('');
     const host = isLive ? hostFor(portfolioUrl) : '';
+    const displayUrl = isLive ? portfolioUrl.replace(/^https?:\/\//, '').replace(/\/$/, '') : '';
     const bg = colorFor(p.name);
 
     const thumbHtml = isLive
@@ -808,34 +844,32 @@
            <img src="https://api.microlink.io/?url=${encodeURIComponent(portfolioUrl)}&screenshot=true&meta=false&embed=screenshot.url"
                 alt="${escapeAttr(p.name)} portfolio preview" loading="lazy"
                 onerror="thumbFallback(this)">
-           <div class="thumb-screenshot-caption">
-             <span class="sd">${escapeHtml(displayUrl)}</span>
-             <span class="sc">Open ↗</span>
-           </div>
          </div>`
       : `<div class="thumb-frame no-site">
            <div class="thumb-mono">${escapeHtml(initials)}</div>
            <div class="thumb-top" style="color:var(--ink-3);"><span>Profile only</span><span>—</span></div>
            <div class="thumb-bottom" style="color:var(--ink-2);">
              <div class="thumb-domain">${escapeHtml(p.portfolio ? hostFor(p.portfolio) : 'no link submitted')}</div>
-             <div class="thumb-cta" style="color:var(--ink-3);">No live site</div>
            </div>
          </div>`;
+
+    const btnHtml = isLive
+      ? `<a class="portfolio-btn" href="${escapeAttr(portfolioUrl)}" target="_blank" rel="noopener">View Portfolio ↗</a>`
+      : `<span class="portfolio-btn no-link">No live site</span>`;
 
     card.innerHTML = `
       <div class="card-head">
         <h3 class="card-name">${escapeHtml(p.name)}</h3>
-        <span class="card-num">${String(idx + 1).padStart(2,'0')} / ${String(data.length).padStart(2,'0')}</span>
+        <span class="card-disc">${escapeHtml(p.discipline)}</span>
       </div>
       <p class="summary">${escapeHtml(p.northStar)}</p>
       <div class="tools">${toolsHtml}</div>
       <div class="thumb-wrap">${thumbHtml}</div>
-      <div class="testimonial">${testimonialHtml}</div>
-      <span class="openhint">View →</span>
+      ${btnHtml}
     `;
 
     card.addEventListener('click', e => {
-      // Don't open overlay if user clicked an actual link inside (none yet)
+      if (e.target.closest('.portfolio-btn')) return;
       openSheet(idx);
     });
 
@@ -964,7 +998,6 @@
       <div class="thumb-top"><span>Portfolio</span><span>${h}</span></div>
       <div class="thumb-bottom">
         <div class="thumb-domain">${d}</div>
-        <div class="thumb-cta">Open ↗</div>
       </div>
     `;
   };
