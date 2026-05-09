@@ -3,6 +3,7 @@ window.COHORT = [
   {
     name: "Mary Killelea",
     discipline: "Business",
+    screenshot: "screenshots/webp/mary-killelea.webp",
     northStar: "My north star is to build practical AI skills that I can apply professionally, monetize strategically, and use to open new career opportunities and relationships.",
     gap: "AI terminology and practical fluency; confidence using emerging tools; comfort experimenting and building; hands-on experience with Lovable and GitHub; a clearer understanding of how to apply AI professionally; new connections and career possibilities.",
     giving: "Help others articulate their value, simplify their message, and convey confidence and authority — and gut-check Skill-Forward's program for non-technical audiences.",
@@ -15,6 +16,7 @@ window.COHORT = [
   {
     name: "Pedro I Hernández",
     discipline: "Operations",
+    screenshot: "screenshots/webp/pedro-hernandez.webp",
     northStar: "When addressing new challenges, I try to find solutions that not only address the current situation but are also scalable — improving day-to-day interactions between team members, the organization, and the value delivered.",
     gap: "Improve my visualization of workflows with the AI tools and methods available.",
     giving: "Be a problem solver and solution provider — step outside your comfort zone and take different personas when bringing value to others.",
@@ -27,6 +29,7 @@ window.COHORT = [
   {
     name: "Priya Limaye",
     discipline: "Engineering",
+    screenshot: "screenshots/webp/priya-limaye.webp",
     northStar: "I'm a developer. I feel most energized turning a concept into a functional reality. AI tools handle the boilerplate so I can focus on high-level integration and bring other people's visionary ideas to life faster than ever.",
     gap: "As a developer I've often felt slowed down by frontend polish. Mastering AI-native tools like Lovable and Cursor lets me deliver a full-stack, polished experience.",
     giving: "Software development logic and architecture — how to structure prompts for cleaner code, and how to think like a developer when debugging AI-generated outputs.",
@@ -39,6 +42,7 @@ window.COHORT = [
   {
     name: "Anusha Suntheram",
     discipline: "Operations",
+    screenshot: "screenshots/webp/anusha-suntheram.webp",
     northStar: "Solving problems drives me. I sit between business and tech and have a way of building bridges to solve end-to-end supply chain problems. AI helps reduce the mundane so I can spend time actually helping people.",
     gap: "Learn how to use more tools like GitHub.",
     giving: "Strategic planning. Hoping to gain the ease that most people seem to have around the new apps that are popping up.",
@@ -63,6 +67,7 @@ window.COHORT = [
   {
     name: "Susan Chow",
     discipline: "Business",
+    screenshot: "screenshots/webp/susan-chow.webp",
     northStar: "As a non-coder, I'm really excited to learn coding skills — and energized that there are people around in my same situation, learning together.",
     gap: "Understand fundamentals in coding, coding tools, and overall general computing knowledge.",
     giving: "Hope to support and energize fellow cohort members to be in community and upskill together.",
@@ -75,6 +80,7 @@ window.COHORT = [
   {
     name: "Michael Moore",
     discipline: "Engineering",
+    screenshot: "screenshots/webp/michael-moore.webp",
     northStar: "Building and improving systems that make teams more productive. AI helps build more feature-rich and robust tools — and do it faster than I can as a beginner coder but seasoned systems thinker.",
     gap: "Prompt engineering and using AI agents effectively to streamline work — safely.",
     giving: "Happy to work with others from the cohort to solve problems and learn together.",
@@ -87,6 +93,7 @@ window.COHORT = [
   {
     name: "Mike Karras",
     discipline: "Engineering",
+    screenshot: "screenshots/webp/mike-karras.webp",
     northStar: "Creating interesting, expressive digital experiences and highly functional applications. AI is an accelerator for both.",
     gap: "Personal branding, resume polishing, portfolio.",
     giving: "Can teach or share software engineering topics. Hoping to learn on the data science / ML side.",
@@ -99,6 +106,7 @@ window.COHORT = [
   {
     name: "Pallavi Kadam",
     discipline: "Engineering",
+    screenshot: "screenshots/webp/pallavi-kadam.webp",
     northStar: "Looking into software systems and validation roles, I'm interested in applying AI to actual debugging and CI/CD pipelines. I feel energized and purposeful when I'm practicing yoga, learning nutrition, mentoring, or learning new technologies and seeing the good impact.",
     gap: "HackerRank-style coding problems during interviews. Detailed deep-dive technical areas. AI agent architecture.",
     giving: "Comfortable sharing technical details. Excited to know what kind of different ideas others have.",
@@ -111,6 +119,7 @@ window.COHORT = [
   {
     name: "Jon Beam",
     discipline: "Engineering",
+    screenshot: "screenshots/webp/jon-beam.webp",
     northStar: "Building & creating with AI. Being able to actually create something — app, function, site — that was previously just an idea, and bring it to life.",
     gap: "Confidently deploy a working, functioning thing and make it live and usable by others.",
     giving: "My perspective, experience and knowledge as it may apply to others' learning. Hoping to learn the different processes others use.",
@@ -123,6 +132,7 @@ window.COHORT = [
   {
     name: "Tuan Doan",
     discipline: "Engineering",
+    screenshot: "screenshots/webp/tuan-doan.webp",
     northStar: "Possibilities. AI now gives me more possibilities — like the early internet era. AI enables me to be creative and get my ideas out there.",
     gap: "Cloud certifications.",
     giving: "Can teach token-efficient vibe coding.",
@@ -135,6 +145,7 @@ window.COHORT = [
   {
     name: "Kenyon (Rosebud) Acton",
     discipline: "Data",
+    screenshot: "screenshots/webp/kenyon-acton.webp",
     northStar: "I want to help people and improve society through data. I'm working on a project around permitting since this seems to be an area cities can use help with — going from policy to practice.",
     gap: "AI, technical interviewing skills, hands-on data science, portfolio with proof of data science work.",
     giving: "Leadership, design, creative thinking. Hoping to network, learn best practices, and learn technical skills — I tend to be concerned about security issues.",
@@ -147,6 +158,7 @@ window.COHORT = [
   {
     name: "Srikathyayani Srikanteswara",
     discipline: "Engineering",
+    screenshot: "screenshots/webp/srikathyayani.webp",
     northStar: "Solving hard problems energizes me the most. AI is like having a team of software programmers at your disposal — it's possible to test out a lot more ideas solo without needing a team of engineers.",
     gap: "Being able to deploy large-scale AI/ML systems in the cloud.",
     giving: "Anything wireless and networking and AI; foundations of AI/ML and LLM models including transformer architecture. Also vibe coding with Cursor, Claude, etc.",
@@ -159,6 +171,7 @@ window.COHORT = [
   {
     name: "Sunitha Narayanan",
     discipline: "Engineering",
+    screenshot: "screenshots/webp/sunitha-narayanan.webp",
     northStar: "Building the invisible systems that enable global innovation. I bridge ambitious business vision with complex architecture to create effortless consumer experiences. In this next chapter I'm focusing on Technical Orchestration within Agentic AI and MLOps — building secure, compliant, ethically architected platforms.",
     gap: "Architectural orchestration of Agentic AI within MLOps frameworks — mastering autonomous agents requires a new level of precision in governance and deployment pipelines.",
     giving: "Career transitions and modernizing professional narratives. Hoping to gain fresh perspectives on hands-on agentic implementations and the operational trade-offs of moving AI projects from 0 to 1.",
@@ -171,6 +184,7 @@ window.COHORT = [
   {
     name: "Kristopher Mahdak",
     discipline: "Product",
+    screenshot: "screenshots/webp/kristopher-mahdak.webp",
     northStar: "I dream of a day when we use computers more while spending no time on screens.",
     gap: "Effective communication articulating accomplishments.",
     giving: "How to write prompts, direct LLM progressions, and build chat/project context. I learn by understanding failure.",
@@ -183,6 +197,7 @@ window.COHORT = [
   {
     name: "Sirisha Malladi",
     discipline: "Product",
+    screenshot: "screenshots/webp/sirisha-malladi.webp",
     northStar: "I feel most energized when I'm helping teams move forward with clarity — facilitating cross-team collaboration, removing impediments, and keeping work flowing toward shared goals. I see AI as a way to support this further: identify patterns earlier, surface risks, and reduce manual effort.",
     gap: "Getting more hands-on with AI tools and understanding how to apply them in day-to-day work.",
     giving: "Helping teams stay aligned and move work forward — Agile delivery, stakeholder communication, keeping work on track. Hoping to learn how others are using AI to solve real-world pain points.",
@@ -195,6 +210,7 @@ window.COHORT = [
   {
     name: "Khalid Abughazaleh",
     discipline: "Engineering",
+    screenshot: "screenshots/webp/khalid-abughazaleh.webp",
     northStar: "When I'm trying to solve a persisting problem with a personal stake in it.",
     gap: "Additional practical skills and foundational knowledge, especially in areas of less experience.",
     giving: "More implementational or practical knowledge that reduces frustration.",
@@ -207,6 +223,7 @@ window.COHORT = [
   {
     name: "Supriya Shanbhag",
     discipline: "Business",
+    screenshot: "screenshots/webp/supriya-shanbhag.webp",
     northStar: "Quest to understand this universe and how people can continuously evolve. AI can help me create tools to address the evolving psychological, spiritual and social needs of human beings and the Earth that we inhabit.",
     gap: "Application of AI-enabled technologies to solve issues in social, economic and racial justice.",
     giving: "Inter-disciplinary uses of technology. Can learn a lot about how to think about technology and diverse ways of applying tools and innovation.",
@@ -219,6 +236,7 @@ window.COHORT = [
   {
     name: "Aji Fatou Dibba",
     discipline: "Data",
+    screenshot: "screenshots/webp/aji-fatou-dibba.webp",
     northStar: "Being of service to my family, friends, and community drives me. AI could help accelerate a financial service tool that is useful to people, especially women.",
     gap: "Working on projects that I can put on GitHub and are also useful — and projects that are iterative.",
     giving: "Can teach skills from my data science journey, or thinking through ideas to flesh out an MVP. Hoping to learn AI skills.",
@@ -231,6 +249,7 @@ window.COHORT = [
   {
     name: "Aprajita Shukla",
     discipline: "Engineering",
+    screenshot: "screenshots/webp/aprajita-shukla.webp",
     northStar: "When my projects do social good and inform people at the same time.",
     gap: "AI project portfolio and coding acumen.",
     giving: "Hoping to learn how to use agentic AI to write better, optimized code. Can share my knowledge of AI and git with fellow members.",
@@ -243,6 +262,7 @@ window.COHORT = [
   {
     name: "Shaila Mudigonda",
     discipline: "Product",
+    screenshot: "screenshots/webp/shaila-mudigonda.webp",
     northStar: "Deliver meaningful customer & business outcomes — consistently and predictably. AI skills to create shippable prototypes that build excitement, and clear specs for engineering to build with excellence.",
     gap: "Venture.",
     giving: "Can teach business analysis / product management tips.",
@@ -255,6 +275,7 @@ window.COHORT = [
   {
     name: "Corinne Nakashima",
     discipline: "Engineering",
+    screenshot: "screenshots/webp/corinne-nakashima.webp",
     northStar: "Rapid dev and deployment — can immediately help my friends and community with a variety of website-based projects.",
     gap: "Knowledge of ML and AI dev such as PyTorch and RAG LLM dev.",
     giving: "How to use Git and GitHub for proper code review and dev, JIRA and Agile processes, and Python. Hoping to learn more about RAG-LLM and PyTorch.",
@@ -267,6 +288,7 @@ window.COHORT = [
   {
     name: "AdeBunmi Adeyemo",
     discipline: "Business",
+    screenshot: "screenshots/webp/adebunmi-adeyemo.webp",
     northStar: "The unlimited potential AI opens, and getting to creatively build something and add on to it.",
     gap: "AI software engineering / model building, or advanced vibe coding with more proofs of work.",
     giving: "Business mindset and technologically savvy. Hoping to learn from others' great ideas and approaches on how to use AI.",

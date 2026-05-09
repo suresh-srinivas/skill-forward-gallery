@@ -337,12 +337,16 @@
     const bg = colorFor(p.name);
     const displayUrl = isLive ? portfolioUrl.replace(/^https?:\/\//, '').replace(/\/$/, '') : null;
 
+    const mlUrl = `https://api.microlink.io/?url=${encodeURIComponent(portfolioUrl)}&screenshot=true&meta=false&embed=screenshot.url`;
+    const imgSrc = p.screenshot || mlUrl;
+
     const thumbHtml = isLive
       ? `<div class="tcard-thumb" data-initials="${escapeAttr(initials)}" data-bg="${escapeAttr(bg)}" data-name="${escapeAttr(p.name)}">
-           <img src="https://api.microlink.io/?url=${encodeURIComponent(portfolioUrl)}&screenshot=true&meta=false&embed=screenshot.url"
+           <img src="${escapeAttr(imgSrc)}"
+                ${p.screenshot ? `data-microlink="${escapeAttr(mlUrl)}"` : ''}
                 alt="${escapeAttr(p.name)} portfolio"
                 loading="lazy"
-                onerror="thumbFallback(this)">
+                onerror="imgFallback(this)">
          </div>`
       : `<div class="tcard-thumb" style="background:${bg};">
            <div class="thumb-fallback">
@@ -370,6 +374,16 @@
     `;
     galleryEl.appendChild(card);
   });
+
+  window.imgFallback = function(img) {
+    const ml = img.dataset.microlink;
+    if (ml && !img.src.includes('microlink.io')) {
+      img.onerror = function() { thumbFallback(img); };
+      img.src = ml;
+    } else {
+      thumbFallback(img);
+    }
+  };
 
   window.thumbFallback = function(img) {
     const frame = img.closest('.tcard-thumb');
